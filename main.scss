@@ -50,7 +50,7 @@ body{
     background-size: 100% 200%;
     color: #333;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
-    font-size: clamp(12px, 12vw,50px);
+    font-size: 28px;
     font-family: 'Open Sans', Helvetica, sans-serif;
     border-radius: 5px;
     box-shadow: 1px 2px 10px 0px rgba(0,0,0,0.3);
@@ -63,7 +63,7 @@ body{
         color: white;
         top: 5%;
         left: 5%;
-        font-size: 70px;
+        font-size: 60px;
     }
     .hide{
         opacity: 0;
@@ -71,7 +71,8 @@ body{
     .description{
         position: absolute;
         bottom: 10px;
-        font-size: 20px;
+        font-size: .45em;
+        white-space: nowrap;
     }
     img{
         width: 80%;
@@ -94,7 +95,8 @@ body{
     }
     .previous, .next{
         cursor: pointer;
-        line-height: 115px;
+        display: flex;
+        align-items: center;
     }
     .pokemonId{
         display: flex;
