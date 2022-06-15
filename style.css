@@ -1,0 +1,96 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:800");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+:root {
+  --green1: #68AE28;
+  --green2: #006359;
+  --red1: #EF8200;
+  --red2: #E50020;
+  --blue1: #AFCEE5;
+  --blue2: #3396CD;
+  --black1: #006A6B;
+  --black2: #333;
+  --brown1: #BF794E;
+  --brown2: #91301D;
+  --gray1: #D2DDF0;
+  --gray2: #ADB2B4;
+  --pink1: #F7C6BD;
+  --pink2: #D08690;
+  --purple1: #CD91BE;
+  --purple2: #91308C;
+  --white1: #f1f1f1;
+  --white2: #D3EBEA;
+  --yellow1: #FFE100;
+  --yellow2: #F9BE00;
+}
+
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--white1);
+  display: grid;
+  place-content: center;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.frame {
+  position: relative;
+  width: min(90vw, 600px);
+  aspect-ratio: 2/3;
+  background: radial-gradient(circle, white 0%, white 50%, var(--green1) 50%, var(--green2) 100%);
+  background-size: 100% 200%;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  font-size: clamp(12px, 12vw, 50px);
+  font-family: "Open Sans", Helvetica, sans-serif;
+  border-radius: 5px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.frame .description {
+  position: absolute;
+  bottom: 10px;
+  font-size: 20px;
+}
+.frame img {
+  width: 80%;
+  max-height: 75%;
+  cursor: pointer;
+  filter: drop-shadow(4px 4px 10px rgba(0, 0, 0, 0.5));
+}
+.frame .name {
+  position: absolute;
+  width: 90%;
+  bottom: 5%;
+  left: 5%;
+  padding: 5px 10px;
+  border-radius: 35px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(25px);
+  display: flex;
+  justify-content: space-between;
+}
+.frame .previous, .frame .next {
+  cursor: pointer;
+  line-height: 115px;
+}
+.frame .pokemonId {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/*# sourceMappingURL=style.css.map */
