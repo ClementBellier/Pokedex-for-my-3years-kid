@@ -105,10 +105,21 @@ const buildSpeechName = (pokemonNumber, pokemonName) => {
     speech.lang = "fr-FR"
 }
 
+const displaySpeakIcon = () => {
+    document.querySelector(".speak-icone").classList.remove("hide")
+}
+const hideSpeakIcon = () => {
+    document.querySelector(".speak-icone").classList.add("hide")
+}
+
 const listenClickToSpeech = () => {
     document.querySelector("#pokemonImage").addEventListener('click',()=>{
         const notAlreadySpeaking = !window.speechSynthesis.speaking
-        if(notAlreadySpeaking) window.speechSynthesis.speak(speech)
+        if(notAlreadySpeaking) {
+            window.speechSynthesis.speak(speech)
+            displaySpeakIcon()
+            speech.onend = () => hideSpeakIcon()
+        }
     }) 
 }
 

@@ -58,6 +58,16 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+    .speak-icone{
+        position: absolute;
+        color: white;
+        top: 5%;
+        left: 5%;
+        font-size: 70px;
+    }
+    .hide{
+        opacity: 0;
+    }
     .description{
         position: absolute;
         bottom: 10px;
@@ -80,6 +90,7 @@ body{
         backdrop-filter: blur(25px);
         display: flex;
         justify-content: space-between;
+        z-index: 5;
     }
     .previous, .next{
         cursor: pointer;

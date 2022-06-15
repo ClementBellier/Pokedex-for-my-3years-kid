@@ -59,6 +59,16 @@ body {
   align-items: center;
   justify-content: space-evenly;
 }
+.frame .speak-icone {
+  position: absolute;
+  color: white;
+  top: 5%;
+  left: 5%;
+  font-size: 70px;
+}
+.frame .hide {
+  opacity: 0;
+}
 .frame .description {
   position: absolute;
   bottom: 10px;
@@ -81,6 +91,7 @@ body {
   backdrop-filter: blur(25px);
   display: flex;
   justify-content: space-between;
+  z-index: 5;
 }
 .frame .previous, .frame .next {
   cursor: pointer;
