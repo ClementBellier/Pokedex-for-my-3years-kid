@@ -69,9 +69,9 @@ const changePokemonNumber = (pokemonNumber) => {
     document.getElementById("pokemonNumber").innerHTML = pokemonNumberDisplay
 }
 
-const changePokemonBackground = (pokemonColorIndex) => {
+const changeBackgroundColor = (pokemonColorIndex) => {
     const colors = ['yellow','black','blue','brown','gray','green','pink','purple','red','white']
-    frame.setAttribute("style",`background: radial-gradient(circle, white 0%, white 50%, var(--${colors[pokemonColorIndex]}1) 50%, var(--${colors[pokemonColorIndex]}2) 100%);background-size: 100% 200%;`)
+    frame.setAttribute("data-bg-color",`${colors[pokemonColorIndex]}`)
 }
 
 const changePokemon = async (number) => {
@@ -82,7 +82,7 @@ const changePokemon = async (number) => {
     const pokemonColorIndex = pokemonData.color.url[pokemonData.color.url.length - 2]
     const pokemonImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${number}.svg`
 
-    changePokemonBackground(pokemonColorIndex)
+    changeBackgroundColor(pokemonColorIndex)
     changePokemonNumber(number)
     changePokemonName(pokemonName)
     changePokemonImage(pokemonImageUrl)
@@ -105,11 +105,8 @@ const buildSpeechName = (pokemonNumber, pokemonName) => {
     speech.lang = "fr-FR"
 }
 
-const displaySpeakIcon = () => {
-    document.querySelector(".speak-icone").classList.remove("hide")
-}
-const hideSpeakIcon = () => {
-    document.querySelector(".speak-icone").classList.add("hide")
+const toggleSpeakIcon = () => {
+    document.querySelector(".speak-icone").classList.toggle("hide")
 }
 
 const listenClickToSpeech = () => {
@@ -117,8 +114,8 @@ const listenClickToSpeech = () => {
         const notAlreadySpeaking = !window.speechSynthesis.speaking
         if(notAlreadySpeaking) {
             window.speechSynthesis.speak(speech)
-            displaySpeakIcon()
-            speech.onend = () => hideSpeakIcon()
+            toggleSpeakIcon()
+            speech.onend = () => toggleSpeakIcon()
         }
     }) 
 }
