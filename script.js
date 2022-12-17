@@ -44,7 +44,7 @@ const goodFrenchPronunciation = {
     150: "Miou Tout",
     151: "Miou",
 }
-
+const AdventCalendarPokemon = [176,186,195,199,205,209,231,239,248,259,417,418,491,498,579,296,309,434,512,184,283,266,202,554,587,282,489,580,391,511,596,523,674,278,420,376,225,576,644,555,283,194,228,517,2,6,23,24,25,34,36,37,55,74,75,79,80,81,82,86,94,97,110,112,113,116,120,137,145,147,149,125,87].sort((a,z)=>a-z)
 const getPokemonSpecies = async (PokemonNumber) => 
     fetch(`https://pokeapi.co/api/v2/pokemon-species/${PokemonNumber}/`)
         .then(res => res.json())
@@ -80,7 +80,10 @@ const changePokemon = async (number) => {
 
     // retrieve color id in pokemonData.color.url + build url image to avoid new API calls
     const pokemonColorIndex = pokemonData.color.url[pokemonData.color.url.length - 2]
-    const pokemonImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${number}.svg`
+    let pokemonImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${number}.svg`
+
+    if(number >= 650) pokemonImageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${number}.png`
+
 
     changeBackgroundColor(pokemonColorIndex)
     changePokemonNumber(number)
@@ -147,10 +150,30 @@ const listenChangeNumber = () => {
     })
 }
 
-const main = () => {
-    const startWithFirstPokemon = 1
-    pokemon(startWithFirstPokemon)
-    listenChangeNumber()
+
+const listenChangeNumberAdventCalendar = () => {
+    let pokemonIndex = 0
+    document.querySelector("#next").addEventListener('click', ()=>{
+        pokemonIndex++;
+        if(pokemonIndex >= AdventCalendarPokemon.length) pokemonIndex = 0
+        pokemon(AdventCalendarPokemon[pokemonIndex])
+    })
+    document.querySelector("#previous").addEventListener('click', ()=>{
+        pokemonIndex--;
+        if(pokemonIndex <= 0) pokemonIndex = AdventCalendarPokemon.length - 1
+        pokemon(AdventCalendarPokemon[pokemonIndex])
+    })
 }
+
+const main = () => {
+    const startWithFirstPokemon = AdventCalendarPokemon[0]
+    pokemon(startWithFirstPokemon)
+    listenChangeNumberAdventCalendar()
+}
+// const main = () => {
+//     const startWithFirstPokemon = 1
+//     pokemon(startWithFirstPokemon)
+//     listenChangeNumber()
+// }
 
 main()
