@@ -83,7 +83,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 25px;
-  font-size: 50px;
+  font-size: min(6.3vw, 50px);
   transition: .3s ease-in-out;
   transform: translateX(-100vw);
 }
