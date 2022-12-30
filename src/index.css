@@ -71,6 +71,32 @@ body {
   top: 5%;
   left: 5%;
 }
+.frame .pokemon-menu-icone{
+  top: 5%;
+  right: 5%;
+}
+.frame .pokemon-menu{
+  position: absolute;
+  inset: 0;
+  padding: 3%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  z-index: 110;
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+.frame .pokemon-menu div{
+  width: 32%;
+  aspect-ratio: 1;
+}
+.frame .pokemon-menu img{
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
 .frame .gen-menu{
   position: absolute;
   inset: 5% 2%;

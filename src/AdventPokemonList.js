@@ -7,3 +7,15 @@ export const AdventCalendarPokemon = [
   157, 219, 490, 530, 463, 553, 285, 241, 614, 570, 108, 131, 30, 96, 41, 42,
   35, 111, 5, 1,
 ].sort((a, z) => a - z);
+
+export const limitByGeneration = [
+  {min:1,max:905},
+  {min:1,max:151},
+  {min:152,max:251},
+  {min:252,max:386},
+  {min:387,max:493},
+  {min:494,max:649},
+  {min:650,max:721},
+  {min:722,max:809},
+  {min:810,max:905},
+];

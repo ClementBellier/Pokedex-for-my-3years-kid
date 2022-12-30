@@ -4,19 +4,8 @@ import PokemonImage from "./components/PokemonImage";
 import DisplayPokemonNumber from "./components/PokemonNumber";
 import SpeakIcon from "./components/SpeakIcon";
 import speak from "./function/speak";
-import { AdventCalendarPokemon } from "./AdventPokemonList";
-
-const limitByGeneration = [
-  {min:1,max:905},
-  {min:1,max:151},
-  {min:152,max:251},
-  {min:252,max:386},
-  {min:387,max:493},
-  {min:494,max:649},
-  {min:650,max:721},
-  {min:722,max:809},
-  {min:810,max:905},
-];
+import { AdventCalendarPokemon, limitByGeneration } from "./AdventPokemonList";
+import PokeMenu from "./components/PokeMenu";
 
 const limitToPokemonGen = (pokemonNumber, pokeGen) => {
   const min = limitByGeneration[pokeGen].min
@@ -72,6 +61,7 @@ const App = () => {
   return (
     <>
       <GenMenu pokeGen={pokeGen} setPokeGen={setPokeGen} />
+      <PokeMenu pokeGen={pokeGen} setPokemonNumber={setPokemonNumber} />
       {isSpeaking && <SpeakIcon />}
       <PokemonImage
         pokemonNumber={pokemonNumber}
