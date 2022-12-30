@@ -8,8 +8,8 @@ import { AdventCalendarPokemon, limitByGeneration } from "./AdventPokemonList";
 import PokeMenu from "./components/PokeMenu";
 
 const limitToPokemonGen = (pokemonNumber, pokeGen) => {
-  const min = limitByGeneration[pokeGen].min
-  const max = limitByGeneration[pokeGen].max
+  const min = limitByGeneration[pokeGen].min;
+  const max = limitByGeneration[pokeGen].max;
   if (pokemonNumber < min) pokemonNumber = max;
   if (pokemonNumber > max) pokemonNumber = min;
 
@@ -17,28 +17,31 @@ const limitToPokemonGen = (pokemonNumber, pokeGen) => {
 };
 
 const changePokemonNumber = (pokeGen, pokemonNumber, minus) => {
-  if(pokeGen === 0) {
-    const index = AdventCalendarPokemon.indexOf(pokemonNumber)
-    if(index === -1 || (index+1 === AdventCalendarPokemon.length && !minus)) return AdventCalendarPokemon[0]
-    if(minus && index-1 <0) return AdventCalendarPokemon[AdventCalendarPokemon.length - 1]
-    if(minus) return AdventCalendarPokemon[index - 1]
-    return AdventCalendarPokemon[index + 1]
+  if (pokeGen === 0) {
+    const index = AdventCalendarPokemon.indexOf(pokemonNumber);
+    if (index === -1 || (index + 1 === AdventCalendarPokemon.length && !minus))
+      return AdventCalendarPokemon[0];
+    if (minus && index - 1 < 0)
+      return AdventCalendarPokemon[AdventCalendarPokemon.length - 1];
+    if (minus) return AdventCalendarPokemon[index - 1];
+    return AdventCalendarPokemon[index + 1];
   }
-  if(minus) return limitToPokemonGen(pokemonNumber-1,pokeGen)
-  return limitToPokemonGen(pokemonNumber + 1, pokeGen)
-}
+  if (minus) return limitToPokemonGen(pokemonNumber - 1, pokeGen);
+  return limitToPokemonGen(pokemonNumber + 1, pokeGen);
+};
 
 const App = () => {
   const [pokeGen, setPokeGen] = useState(1);
-  const firstPokemonByGen = pokeGen === 0 ? AdventCalendarPokemon[0] : limitByGeneration[pokeGen].min
+  const firstPokemonByGen =
+    pokeGen === 0 ? AdventCalendarPokemon[0] : limitByGeneration[pokeGen].min;
   const [pokemonNumber, setPokemonNumber] = useState(firstPokemonByGen);
   const [pokemonData, setPokemonData] = useState({});
   const [isError, setError] = useState(false);
   const [isLoading, setLoading] = useState(true);
   const [isSpeaking, setSpeaking] = useState(false);
-  useEffect(()=>{
-    setPokemonNumber(firstPokemonByGen)
-  },[pokeGen])
+  useEffect(() => {
+    setPokemonNumber(firstPokemonByGen);
+  }, [pokeGen]);
   useEffect(() => {
     const fetchPokemon = async () => {
       try {
@@ -58,8 +61,9 @@ const App = () => {
   if (isLoading) return <div>Loading</div>;
   if (isError) return <div>Erreur</div>;
   const pokemonName = pokemonData.names[4].name;
+  const pokemonColor = pokemonData.color.name
   return (
-    <>
+    <div className="frame" data-bg-color={pokemonColor}>
       <GenMenu pokeGen={pokeGen} setPokeGen={setPokeGen} />
       <PokeMenu pokeGen={pokeGen} setPokemonNumber={setPokemonNumber} />
       {isSpeaking && <SpeakIcon />}
@@ -77,8 +81,10 @@ const App = () => {
           className="previous"
           id="previous"
           onClick={() => {
-            const minus = true
-            setPokemonNumber(changePokemonNumber(pokeGen, pokemonNumber, minus ));
+            const minus = true;
+            setPokemonNumber(
+              changePokemonNumber(pokeGen, pokemonNumber, minus)
+            );
           }}
         >
           <i className="fa-solid fa-arrow-left"></i>
@@ -91,14 +97,16 @@ const App = () => {
           className="next"
           id="next"
           onClick={() => {
-            const minus = false
-            setPokemonNumber(changePokemonNumber(pokeGen, pokemonNumber, minus ));
+            const minus = false;
+            setPokemonNumber(
+              changePokemonNumber(pokeGen, pokemonNumber, minus)
+            );
           }}
         >
           <i className="fa-solid fa-arrow-right"></i>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
