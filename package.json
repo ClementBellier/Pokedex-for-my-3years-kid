@@ -1,14 +1,18 @@
 {
   "name": "pokedex-v2",
   "private": true,
+  "homepage": "https://clementbellier.github.io/Pokedex-for-my-3years-kid/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "gh-pages": "^6.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
